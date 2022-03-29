@@ -9,9 +9,27 @@
         <div class="col">
             <h1>Jinja templates</h1>
             <hr>
+            
             <h4>Variables</h4>
             <hr>
-            {{ my_name }}
+            <p>{{ my_name }}</p>
+
+            <h4>Looping</h4>
+            <hr>
+            <ul>
+                {% for lang in langs %}
+                <li>{{lang}}</li>
+                {% endfor %}
+            </ul>
+
+            <h4>Looping with index</h4>
+            <hr>
+            <ul>
+                {% for lang in langs %}
+                <li>{{loop.index}}: {{lang}}</li>
+                {% endfor %}
+            </ul>
+            
 
 
 
