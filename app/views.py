@@ -45,12 +45,13 @@ def jinja():
     def repeat(x, qty):
         return x * qty
 
+    my_html = '<h1>This is my html</h1>'
     
     return render_template(
         "public/jinja.html", my_name=my_name, age=age, 
         langs=langs, friends=friends, colours=colours, 
         cool=cool, GitRemote=GitRemote, repeat=repeat, 
-        my_remote=my_remote)
+        my_remote=my_remote, my_html=my_html)
 
 @app.route("/about")
 def about():

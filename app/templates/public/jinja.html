@@ -1,4 +1,5 @@
 {% extends "public/templates/public_template.html" %}
+{% import 'macros/input_macros.html' as im %}
 
 {% block title %}{% endblock %}
 
@@ -30,8 +31,58 @@
                 {% endfor %}
             </ul>
             
+            <h4>Looping with dict</h4>
+            <hr>
+            <ul>
+                {% for k, v in friends.items() %}
+                <li>{{k}}: {{v}}</li>
+                {% endfor %}
+            </ul>
 
+            <h4>Looping with keys</h4>
+            <hr>
+            <ul>
+                {% for k in friends.keys() %}
+                <li>{{ k }}</li>
+                {% endfor %}
+            </ul>
 
+            <h4>Access list member</h4>
+            <hr>
+            <ul>
+                <li>{{langs[0]}}</li>
+            </ul>
+
+            <h4>Access class atributes</h4>
+            <hr>
+            <ul>
+                <li>{{my_remote.name}}</li>
+            </ul>
+
+            <h4>Call a function</h4>
+            <hr>
+            <ul>
+                <li>{{repeat('Flask is awesome ', 10)}}</li>
+            </ul>
+
+            <h4>Call a class method</h4>
+            <hr>
+            <ul>
+                <li>{{my_remote.clone()}}</li>
+            </ul>
+
+            <h4>Escaping</h4>
+            <hr>
+            <ul>
+                <li>{{my_html|safe}}</li>
+            </ul>
+
+            <h4>Macros</h4>
+            <hr>
+
+            {{im.input(label="Your Name", name="name", id="name", placeholder="Please enter your name")}}
+            {{im.input(label="Your age", type="number", name="age", id="age", placeholder="Please enter your age")}}
+            {{im.input(label="Your password",type="password", name="password", id="password", placeholder="Please enter a password")}}
 
         </div>
     </div>
