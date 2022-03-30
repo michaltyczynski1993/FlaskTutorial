@@ -73,3 +73,30 @@ def sign_up():
         return redirect(request.url)
 
     return render_template("public/sign_up.html")
+
+
+users = {
+    "mitsuhiko":{
+        "name": "Armin Ronaher",
+        "bio": "Creator of the flask freamwork",
+        "twitter_handle": "@mitsuhiko"
+    },
+    "gvanrossum":{
+        "name": "Guido Van Rossum",
+        "bio": "Creator of Python programming language",
+        "twitter_handle": "@gvanrossum"
+    },
+    "elonmusk":{
+        "name": "Elon Musk",
+        "bio": "tehnology entrepreneur, investor and engineer",
+        "twitter_handle": "@elonmusk"
+    }
+}
+@app.route("/profile/<username>")
+def profile(username):
+
+    user = None
+    if username in users:
+        user = users[username]
+
+    return render_template("/public/profile.html", user=user, username=username)
