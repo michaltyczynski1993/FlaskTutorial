@@ -13,8 +13,14 @@
                 <div class="card-body">
                     <h4>{{ username }}</h4>
                     <hr>
+                    
+                    {% if user %}
                     <p><strong>{{user["name"]}}</strong></p>
                     <p class="text-muted">{{user["bio"]}}</p>
+                    <p><em>{{user["twitter_handle"]}}</em></p>
+                    {% else %}
+                    <p>User not Found</p>
+                    {% endif %}
                 </div>
             </div>
 
