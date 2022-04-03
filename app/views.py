@@ -100,3 +100,11 @@ def profile(username):
         user = users[username]
 
     return render_template("/public/profile.html", user=user, username=username)
+
+@app.route("/json", methods=['POST'])
+def json():
+
+    req = request.get_json()
+    print(req)
+
+    return "Thanks!", 200
