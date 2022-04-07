@@ -1,5 +1,6 @@
+from urllib import response
 from app import app
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, jsonify, make_response
 
 @app.route("/")
 def index():
@@ -69,6 +70,7 @@ def sign_up():
         password = req["password"]
         
         print(username, email, password)
+        print(request.url)
         
         return redirect(request.url)
 
@@ -103,8 +105,15 @@ def profile(username):
 
 @app.route("/json", methods=['POST'])
 def json():
-
-    req = request.get_json()
-    print(req)
-
-    return "Thanks!", 200
+    
+    if request.is_json:
+        req = request.get_json()
+        response = {
+            "message": "JSON received",
+            "name": req.get("name")
+        }
+        res = make_response(jsonify(response), 200)
+        return res
+    else:
+        res = make_response(jsonify({"message": "No JSON received"}), 400)
+        return res
